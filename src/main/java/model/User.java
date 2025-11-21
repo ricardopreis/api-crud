@@ -9,25 +9,27 @@ public class User {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column (name = "id", nullable = false)
     private Long id;
 
 
     @NotBlank (message = "Username is required")
     @Size (min = 3,  max = 50, message = "Username must be between 3 and 50 characters")
-    @Column (nullable = false, unique = true)
+    @Column (name = "username", nullable = false, unique = true)
     private String username;
 
     @NotBlank (message = "Email is required")
     @Email (message = "Please provide a valid email")
-    @Column (nullable = false, unique = true)
+    @Column (name = "email", nullable = false, unique = true)
     private String email;
 
     @NotBlank (message = "Password is required")
     @Size (min = 6, message = "Password must have at least 6 characters")
-    @Column (nullable = false)
+    @Column (name = "PASSWORD", nullable = false)
     private String password;
 
     @Pattern(regexp = "^\\+?\\d{10,15}$")
+    @Column (name = "phone", nullable = false)
     private String phone;
 
     public Long getId() {
